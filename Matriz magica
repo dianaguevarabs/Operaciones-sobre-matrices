@@ -1,0 +1,77 @@
+// Matriz magica Diana Guevara 181864
+#include <stdio.h>
+
+#define filas 3
+# define columnas 3
+
+int main() 
+{
+  int matriz[filas][columnas];
+  int i, j, sumafila1 = 0, sumafila2 = 0, sumafila3 = 0, sumacolumna1 = 0, sumacolumna2 = 0, sumacolumna3 = 0, sumadiagonal1 = 0, sumadiagonal2 = 0;
+  for (i = 0; i < 3; i++) 
+  {
+    for (j = 0; j < 3; j++) 
+	{
+      printf("Ingrese el elemento [%d][%d]: ", i, j);
+      scanf("%d", &matriz[i][j]);
+    }
+  }
+  printf("\n");
+  for (i = 0; i < 3; i++) 
+  {
+    for (j = 0; j < 3; j++) 
+	{
+      printf("%d ", matriz[i][j]);
+    }
+    printf("\n");
+  }
+  printf ("\n");
+  for (j = 0; j < 3; j++) 
+  {
+  sumafila1 += matriz[0][j];
+  }
+  for (j = 0; j < 3; j++) 
+  {
+  sumafila2 += matriz[1][j];
+  }
+  for (j = 0; j < 3; j++) 
+  {
+  sumafila3 += matriz[2][j];
+  }
+  for (i = 0; i < 3; i++) 
+  {
+    sumacolumna1 += matriz[i][0];
+  }
+  for (i = 0; i < 3; i++) 
+  {
+  sumacolumna2 += matriz[i][1];
+  }
+  for (i = 0; i < 3; i++) 
+  {
+    sumacolumna3 += matriz[i][2];
+  }
+  for (i = 0; i < 3; i++) 
+  {
+    sumadiagonal1 += matriz[i][i];
+  }
+  for (j = 0; j < 3; j++) 
+  {
+    sumadiagonal2 += matriz[j][j];
+  }
+  printf("Suma de la fila 1: %d\n", sumafila1);
+  printf("Suma de la fila 2: %d\n", sumafila2); 
+  printf("Suma de la fila 3: %d\n", sumafila3); 
+  printf("\n");
+  printf("Suma de la columna 1: %d\n", sumacolumna1);
+  printf("Suma de la columna 2: %d\n", sumacolumna2); 
+  printf("Suma de la columna 3: %d\n", sumacolumna3); 
+  printf("\n");
+  printf("Suma de la diagonal principal: %d\n", sumadiagonal1);
+  printf("Suma de la diagonal secundaria: %d\n", sumadiagonal2);
+  printf ("\n");
+	if (sumafila1 == sumafila2 & sumafila1 == sumafila3 & sumacolumna1 == sumacolumna2 & sumacolumna1 == sumacolumna3 & sumadiagonal1 == sumadiagonal2)
+	{
+		printf ("La matriz es magica!!!\n");
+	}
+  return 0;
+}
