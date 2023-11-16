@@ -1,4 +1,5 @@
 // Operaciones sobre matrices Diana Guevara 181864
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -9,22 +10,22 @@
 int main() 
 {
     int matriz[filas][columnas];
-    int i, j, sumadiagonal = 0, sumafila1 = 0, sumacolumna7 = 0, sumafila3 = 0, sumafila5 = 0, sumafilas135 = 0;
-    int sumacolumna2 = 0, sumacolumna4 = 0, sumacolumna6 = 0, sumacolumnas246 = 0, sumatriangularinferior = 0, sumatriangularsuperior=0;
+    int i, j, sumadiagonal = 0, sumafila1 = 0, sumacolumna7 = 0, sumafila3 = 0, sumafila5 = 0, sumafilas135 = 0, sumacolumna2 = 0, sumacolumna4 = 0, sumacolumna6 = 0, sumacolumnas246 = 0, sumatriangularsuperior = 0, sumatriangularinferior = 0;
     srand(time(NULL));
-    for (i = 0; i < filas; i++) 
-	{
-        for (j = 0; j < columnas; j++) 
-		{
-            matriz[i][j] = rand() % 10;
-        }
-    }
     printf("Matriz generada:\n");
     for (i = 0; i < filas; i++) 
 	{
         for (j = 0; j < columnas; j++) 
 		{
+            matriz[i][j] = rand() % 10;
             printf("%2d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    for (i = 0; i < filas; i++) 
+	{
+        for (j = 0; j < columnas; j++) 
+		{
             if (i == j) 
 			{
                 sumadiagonal += matriz[i][j];
@@ -33,8 +34,7 @@ int main()
 			{
                 sumafila1 += matriz[i][j];
             }
-            if (j == columnas - 1) 
-			{
+            if (j == columnas - 1) {
                 sumacolumna7 += matriz[i][j];
             }
             if (i == 2) 
@@ -45,7 +45,6 @@ int main()
 			{
                 sumafila5 += matriz[i][j];
             }
-            sumafilas135 = sumafila1 + sumafila3 + sumafila5;
             if (j == 1) 
 			{
                 sumacolumna2 += matriz[i][j];
@@ -58,40 +57,33 @@ int main()
 			{
                 sumacolumna6 += matriz[i][j];
             }
-        }
-        printf("\n");
-    for (i = 1; i < 5; i++) 
-	{
-        for (j = 0; j < i; j++) 
-		{
-            sumatriangularinferior += matriz[i][j];
-        }
-    }
-       for (i = 0; i < 5; i++) 
-	{
-        for (j = i + 1; j < 7; j++) 
-		{
-            sumatriangularsuperior += matriz[i][j];
+            if (i <= j) 
+			{
+                sumatriangularsuperior += matriz[i][j];
+            }
+            if (i >= j) 
+			{
+                sumatriangularinferior += matriz[i][j];
+            }
         }
     }
-    }
+    sumafilas135 = sumafila1 + sumafila3 + sumafila5;
     sumacolumnas246 = sumacolumna2 + sumacolumna4 + sumacolumna6;
     printf("\nSuma de la diagonal: %d\n", sumadiagonal);
     printf("Suma de la fila 1: %d\n", sumafila1);
     printf("Suma de la columna 7: %d\n", sumacolumna7);
-	printf("\n");
-    printf("Suma de la fila 1: %d\n", sumafila1);
+    printf("\nSuma de la fila 1: %d\n", sumafila1);
     printf("Suma de la fila 3: %d\n", sumafila3);
     printf("Suma de la fila 5: %d\n", sumafila5);
     printf("Suma de las filas pares: %d\n", sumafilas135);
-    printf("\n");
-    printf("Suma de la columna 2: %d\n", sumacolumna2);
+    printf("\nSuma de la columna 2: %d\n", sumacolumna2);
     printf("Suma de la columna 4: %d\n", sumacolumna4);
     printf("Suma de la columna 6: %d\n", sumacolumna6);
     printf("Suma de las columnas impares: %d\n", sumacolumnas246);
-    printf("\n");
-    printf("Suma del triangular inferior: %d\n", sumatriangularinferior);
-    printf("\n");
+    printf("\nSuma de la diagonal: %d\n", sumadiagonal);
     printf("Suma del triangular superior: %d\n", sumatriangularsuperior);
+    printf("\nSuma de la diagonal: %d\n", sumadiagonal);
+    printf("Suma del triangular inferior: %d\n", sumatriangularinferior);
+
     return 0;
 } 
